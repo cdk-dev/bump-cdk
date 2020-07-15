@@ -15,4 +15,4 @@ outputs:
     description: 'The version of CDK that the project has been set to'
 runs:
   using: 'node12'
-  main: 'index.js'
+  main: 'dist/index.js'
