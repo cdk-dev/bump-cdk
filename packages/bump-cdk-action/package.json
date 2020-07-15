@@ -1,8 +1,18 @@
 {
   "name": "@cdk-tools/bump-cdk-action",
+  "main": "dist/index.js",
+  "scripts": {
+    "dev": "ncc build ./index.ts -w -o dist/",
+    "prerelease": "rimraf ./dist/",
+    "build": "ncc build ./index.ts -o ./dist/ --minify --no-cache --no-source-map-register",
+  },
   "dependencies": {
     "@actions/core": "latest",
     "@actions/github": "latest",
     "@cdk-tools/bump-cdk": "latest"
+  },
+  "devDependencies": {
+    "@zeit/ncc": "latest",
+    "rimraf": "latest"
   }
 }
