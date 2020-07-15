@@ -29,7 +29,7 @@ This for example might cause an error:
 
 This introduces maintenance overhead by forcing you to always have your CDK dependencies matching.
 
-Additionally, because of of NPM/Yarn behavior, when you add dependencies, you often end up with fluid version ranges. [More Information](https://docs.npmjs.com/files/package.json#dependencies).
+Additionally, because of NPM/Yarn behavior, when you add dependencies, you often end up with fluid version ranges. [More Information](https://docs.npmjs.com/files/package.json#dependencies).
 
 Example:
 

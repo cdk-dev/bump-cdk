@@ -1,13 +1,18 @@
 name: 'Bump CDK'
 description: ''
 inputs:
-  version:
-    description: 'Version to set CDK to'
+  working-directory:
+    description: 'Sets the working directory'
     required: false
-    default: 'latest'
+  version:
+    description: 'Explicit version to set cdk dependencies to'
+    required: false
+  debug:
+    description: 'Sets debug mode'
+    required: false
 outputs:
   version:
-    description: 'The version of CDK that the project has been upgraded to'
+    description: 'The version of CDK that the project has been set to'
 runs:
   using: 'node12'
   main: 'index.js'

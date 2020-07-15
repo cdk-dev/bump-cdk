@@ -9,7 +9,7 @@
   "dependencies": {
     "@actions/core": "^1.2.4",
     "@actions/github": "^4.0.0",
-    "@cdk-tools/bump-cdk": "latest"
+    "bump-cdk": "^0.1.4"
   },
   "devDependencies": {
     "@zeit/ncc": "^0.22.3",

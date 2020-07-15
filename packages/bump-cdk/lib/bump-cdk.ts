@@ -37,9 +37,17 @@ async function processDependencies(dependencies: GenericObject, version: string,
 
         cdkPackagePatterns.forEach(pattern => {
             if (packageName.match(pattern)) {
+                if (currentPackage === version) {
+                    if (debug) {
+                        console.log(`${packageName} already up to date`);
+                    }
+                    return
+                }
+
                 if (debug) {
                     console.log(`Updating ${packageName}@${currentPackage} -> ${version}`);
                 }
+
                 response[packageName] = version;
             }
         });
@@ -111,6 +119,8 @@ export async function bumpCdk(cwd: string, version?: string, dryRun=false, debug
         }
 
         await fs.writeFile(packageJsonPath, formattedFile);
+
+        console.log('package.json updated');
 
         return Promise.resolve();
     } else {
