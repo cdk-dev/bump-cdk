@@ -54,10 +54,11 @@ As a result of this, [it is recommended](https://github.com/aws/aws-cdk/issues/3
 Usage
   $ bump-cdk <project-directory>
 Options
-  --version, -v   Version to set cdk to
-  --dry-run       Outputs changes, but doesn't modify any files
-  --help, -h      Displays this message
-  --debug, -d     Enable verbose logging
+  --version, -v            Outputs the version of bump-cdk
+  --explicit-version, -e   Version to set cdk to
+  --dry-run                Outputs changes, but doesn't modify any files
+  --help, -h               Displays this message
+  --debug, -d              Enable verbose logging
 ```
 
 ### Programatic
