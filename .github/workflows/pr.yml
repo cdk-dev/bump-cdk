@@ -1,9 +1,0 @@
-on: [pull_request]
-
-jobs:
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - id: bump
-        uses: '@cdk-tools/bump-cdk-action'
-      - run: echo "${{ steps.bump.outputs.version }}"
