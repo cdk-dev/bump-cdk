@@ -1,0 +1,8 @@
+{
+  "name": "@cdk-tools/bump-cdk-action",
+  "dependencies": {
+    "@actions/core": "latest",
+    "@actions/github": "latest",
+    "@cdk-tools/bump-cdk": "latest"
+  }
+}

@@ -1,0 +1,13 @@
+name: 'Bump CDK'
+description: ''
+inputs:
+  version:
+    description: 'Version to set CDK to'
+    required: false
+    default: 'latest'
+outputs:
+  version:
+    description: 'The version of CDK that the project has been upgraded to'
+runs:
+  using: 'node12'
+  main: 'index.js'
