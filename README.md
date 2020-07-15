@@ -20,10 +20,10 @@ This for example might cause an error:
 
 ```json
 {
-    "dependencies": {
-        "@aws-cdk/core": "1.30.0",
-        "@aws-cdk/aws-lambda": "1.51.0"
-    }
+  "dependencies": {
+    "@aws-cdk/core": "1.30.0",
+    "@aws-cdk/aws-lambda": "1.51.0"
+  }
 }
 ```
 

@@ -37,12 +37,12 @@ if (args['--help']) {
 }
 
 async function run() {
-    const version  = args['--version'];
-    const debug = args['--debug'];
-    const dryRun = args['--dry-run'];
-    const cwd = args._[0] || process.cwd();
-    await bumpCdk(cwd, version, dryRun, debug);
-    process.exit(0);
+  const version = args['--version'];
+  const debug = args['--debug'];
+  const dryRun = args['--dry-run'];
+  const cwd = args._[0] || process.cwd();
+  await bumpCdk(cwd, version, dryRun, debug);
+  process.exit(0);
 }
 
 run();
