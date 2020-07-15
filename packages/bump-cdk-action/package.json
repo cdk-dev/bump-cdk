@@ -1,6 +1,7 @@
 {
   "name": "@cdk-tools/bump-cdk-action",
   "main": "dist/index.js",
+  "version": "1.0.0",
   "scripts": {
     "dev": "ncc build ./index.ts -w -o dist/",
     "prerelease": "rimraf ./dist/",
