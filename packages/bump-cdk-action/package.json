@@ -4,15 +4,15 @@
   "scripts": {
     "dev": "ncc build ./index.ts -w -o dist/",
     "prerelease": "rimraf ./dist/",
-    "build": "ncc build ./index.ts -o ./dist/ --minify --no-cache --no-source-map-register",
+    "build": "ncc build ./index.ts -o ./dist/ --minify --no-cache --no-source-map-register"
   },
   "dependencies": {
-    "@actions/core": "latest",
-    "@actions/github": "latest",
+    "@actions/core": "^1.2.4",
+    "@actions/github": "^4.0.0",
     "@cdk-tools/bump-cdk": "latest"
   },
   "devDependencies": {
-    "@zeit/ncc": "latest",
-    "rimraf": "latest"
+    "@zeit/ncc": "^0.22.3",
+    "rimraf": "^3.0.2"
   }
 }
