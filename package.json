@@ -1,6 +1,6 @@
 {
   "name": "bump-cdk",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "Easily manage AWS CDK Dependencies",
   "homepage": "https://github.com/cdk-tools/bump-cdk#readme",
   "bugs": {

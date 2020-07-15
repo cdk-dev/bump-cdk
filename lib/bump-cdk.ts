@@ -120,8 +120,9 @@ export async function bumpCdk(
   );
 
   const hasChanges = original !== packageJson;
+    
   const formattedFile = JSON.stringify(packageJson, null, 2);
-
+  
   if (!dryRun) {
     if (hasChanges) {
       if (debug) {

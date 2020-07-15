@@ -9,11 +9,13 @@ const lib_1 = require("../lib");
 const args = arg_1.default({
     // Types
     '--help': Boolean,
-    '--version': String,
+    '--version': Boolean,
+    '--explicit-version': String,
     '--debug': Boolean,
     '--dry-run': Boolean,
     // Aliases
     '-v': '--version',
+    '-e': '--explicit-version',
     '-h': '--help',
     '-d': '--debug',
 });
@@ -25,17 +27,18 @@ const help = `
 Usage
   $ bump-cdk <project-directory>
 Options
-  --version, -v   Version to set cdk to
-  --dry-run       Outputs changes, but doesn't modify any files
-  --help, -h      Displays this message
-  --debug, -d     Enable verbose logging
+  --version, -v            Outputs the version of bump-cdk
+  --explicit-version, -e   Version to set cdk to
+  --dry-run                Outputs changes, but doesn't modify any files
+  --help, -h               Displays this message
+  --debug, -d              Enable verbose logging
 `;
 if (args['--help']) {
     console.log(help);
     process.exit(0);
 }
 async function run() {
-    const version = args['--version'];
+    const version = args['--explicit-version'];
     const debug = args['--debug'];
     const dryRun = args['--dry-run'];
     const cwd = args._[0] || process.cwd();
