@@ -2,10 +2,16 @@ import { promises as fs } from 'fs';
 import { join } from 'path';
 import { error, fileExists } from './utils';
 
+/**
+ *
+ */
 type GenericObject = {
   [key: string]: string;
 };
 
+/**
+ *
+ */
 const dependencyKeys = [
   'dependencies',
   'peerDependencies',
@@ -14,6 +20,9 @@ const dependencyKeys = [
   'optionalDependencies',
 ];
 
+/**
+ *
+ */
 export interface PackageJson {
   dependencies?: GenericObject;
   devDependencies?: GenericObject;
@@ -22,8 +31,17 @@ export interface PackageJson {
   optionalDependencies?: GenericObject;
 }
 
+/**
+ *
+ */
 const cdkPackagePatterns = [/[@]?aws-cdk[/]?/];
 
+/**
+ *
+ * @param dependencies
+ * @param version
+ * @param debug
+ */
 async function processDependencies(
   dependencies: GenericObject,
   version: string,
@@ -61,6 +79,9 @@ async function processDependencies(
   return response;
 }
 
+/**
+ *
+ */
 async function getLatestCDKVersion(): Promise<string> {
   /* eslint-disable */
   const pj = require('package-json');
@@ -68,6 +89,13 @@ async function getLatestCDKVersion(): Promise<string> {
   return version;
 }
 
+/**
+ *
+ * @param cwd
+ * @param version
+ * @param dryRun
+ * @param debug
+ */
 export async function bumpCdk(
   cwd: string,
   version?: string,
@@ -145,4 +173,7 @@ export async function bumpCdk(
   }
 }
 
+/**
+ * 
+ */
 export default bumpCdk;
