@@ -2,6 +2,22 @@ const { TypeScriptProject } = require('projen');
 
 const project = new TypeScriptProject({
   name: 'bump-cdk',
+  authorAddress: 'joepsnell@gmail.com',
+  authorName: 'Joe Snell',
+  repository: 'https://github.com/cdk-dev/bump-cdk',
+  description: 'Consistently Bump AWS CDK Versions',
+  keywords: [
+    'aws',
+    'bump',
+    'versions',
+    'ci/cd',
+  ],
+
+  codeCov: true,
+  docgen: true,
+  gitpod: true,
+  projenUpgradeSecret: 'PROJEN_GITHUB_TOKEN',
+  releaseToNpm: true,
 
   deps: [
     'chalk',
@@ -99,6 +115,25 @@ const project = new TypeScriptProject({
   // sampleCode: true,                                                         /* Generate one-time sample in `src/` and `test/` if there are no files there. */
   // tsconfig: undefined,                                                      /* Custom TSConfig. */
   // typescriptVersion: '^3.9.5',                                              /* TypeScript version to use. */
+});
+
+project.github.addMergifyRules({
+  name: 'Label core contributions',
+  actions: {
+    label: {
+      add: ['contribution/core'],
+    },
+  },
+  conditions: [
+    'author~=^(wulfmann)$',
+    'label!=contribution/core',
+  ],
+});
+
+project.gitpod.addTasks({
+  name: 'Setup',
+  init: 'yarn install --frozen-lockfile && projen',
+  command: 'npx projen setup',
 });
 
 project.synth();

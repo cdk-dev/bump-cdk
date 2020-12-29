@@ -1,5 +1,10 @@
 {
   "name": "bump-cdk",
+  "description": "Consistently Bump AWS CDK Versions",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cdk-dev/bump-cdk"
+  },
   "bin": {
     "bump-cdk": "bin/bump-cdk"
   },
@@ -18,7 +23,12 @@
     "projen:upgrade": "npx projen projen:upgrade",
     "watch": "npx projen watch",
     "package": "npx projen package",
-    "eslint": "npx projen eslint"
+    "eslint": "npx projen eslint",
+    "docgen": "npx projen docgen"
+  },
+  "author": {
+    "name": "Joe Snell",
+    "organization": false
   },
   "devDependencies": {
     "@types/jest": "^26.0.19",
@@ -35,12 +45,19 @@
     "projen": "^0.12.3",
     "standard-version": "^9.0.0",
     "ts-jest": "^26.4.4",
+    "typedoc": "^0.20.3",
     "typescript": "^3.9.5"
   },
   "dependencies": {
     "chalk": "^4.1.0"
   },
   "bundledDependencies": [],
+  "keywords": [
+    "aws",
+    "bump",
+    "ci/cd",
+    "versions"
+  ],
   "main": "lib/index.js",
   "license": "Apache-2.0",
   "version": "0.0.0",
