@@ -1,11 +1,17 @@
-import { join } from 'path';
 import { promises as fs } from 'fs';
+import { join } from 'path';
 import { error, fileExists } from './utils';
 
+/**
+ *
+ */
 type GenericObject = {
   [key: string]: string;
 };
 
+/**
+ *
+ */
 const dependencyKeys = [
   'dependencies',
   'peerDependencies',
@@ -14,6 +20,9 @@ const dependencyKeys = [
   'optionalDependencies',
 ];
 
+/**
+ *
+ */
 export interface PackageJson {
   dependencies?: GenericObject;
   devDependencies?: GenericObject;
@@ -22,12 +31,21 @@ export interface PackageJson {
   optionalDependencies?: GenericObject;
 }
 
+/**
+ *
+ */
 const cdkPackagePatterns = [/[@]?aws-cdk[/]?/];
 
+/**
+ *
+ * @param dependencies
+ * @param version
+ * @param debug
+ */
 async function processDependencies(
   dependencies: GenericObject,
   version: string,
-  debug = false
+  debug = false,
 ) {
   if (debug) {
     console.log('processing');
@@ -50,7 +68,7 @@ async function processDependencies(
 
         if (debug) {
           console.log(
-            `Updating ${packageName}@${currentPackage} -> ${version}`
+            `Updating ${packageName}@${currentPackage} -> ${version}`,
           );
         }
 
@@ -61,17 +79,28 @@ async function processDependencies(
   return response;
 }
 
-async function getLatestCDKVersion(debug = false): Promise<string> {
+/**
+ *
+ */
+async function getLatestCDKVersion(): Promise<string> {
+  /* eslint-disable */
   const pj = require('package-json');
   const { version } = await pj('aws-cdk');
   return version;
 }
 
+/**
+ *
+ * @param cwd
+ * @param version
+ * @param dryRun
+ * @param debug
+ */
 export async function bumpCdk(
   cwd: string,
   version?: string,
   dryRun = false,
-  debug = false
+  debug = false,
 ): Promise<void> {
   if (debug) {
     console.log('running in debug mode');
@@ -87,7 +116,7 @@ export async function bumpCdk(
     console.log(`using package.json at path: ${packageJsonPath}`);
   }
 
-  const versionToUse = version || (await getLatestCDKVersion(debug));
+  const versionToUse = version || (await getLatestCDKVersion());
 
   if (debug) {
     console.log(`using CDK version: ${versionToUse}`);
@@ -108,7 +137,7 @@ export async function bumpCdk(
             const dependencyBlock = await processDependencies(
               packageJson[key],
               versionToUse,
-              debug
+              debug,
             );
             packageJson[key] = dependencyBlock;
             resolve();
@@ -116,13 +145,13 @@ export async function bumpCdk(
             reject(e);
           }
         });
-      })
+      }),
   );
 
   const hasChanges = original !== packageJson;
-    
+
   const formattedFile = JSON.stringify(packageJson, null, 2);
-  
+
   if (!dryRun) {
     if (hasChanges) {
       if (debug) {
@@ -144,4 +173,7 @@ export async function bumpCdk(
   }
 }
 
+/**
+ * 
+ */
 export default bumpCdk;
