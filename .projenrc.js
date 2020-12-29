@@ -21,6 +21,10 @@ const project = new TypeScriptProject({
   deps: [
     'chalk',
   ],
+  devDeps: [
+    '@types/chai',
+    'chai',
+  ],
 
   /* NodePackageOptions */
   // allowLibraryDependencies: true,                                           /* Allow the project to include `peerDependencies` and `bundledDependencies`. */

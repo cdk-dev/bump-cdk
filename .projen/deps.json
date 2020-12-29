@@ -1,6 +1,10 @@
 {
   "dependencies": [
     {
+      "name": "@types/chai",
+      "type": "build"
+    },
+    {
       "name": "@types/jest",
       "type": "build"
     },
@@ -17,6 +21,10 @@
     {
       "name": "@typescript-eslint/parser",
       "version": "^4.3.0",
+      "type": "build"
+    },
+    {
+      "name": "chai",
       "type": "build"
     },
     {
