@@ -1,5 +1,5 @@
 import { promises as fs, constants } from 'fs';
-import chalk from 'chalk';
+import * as chalk from 'chalk';
 
 export const error = (message: string) => {
   console.log(chalk.red(message));
