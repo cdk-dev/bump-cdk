@@ -23,8 +23,7 @@
     "projen:upgrade": "npx projen projen:upgrade",
     "watch": "npx projen watch",
     "package": "npx projen package",
-    "eslint": "npx projen eslint",
-    "docgen": "npx projen docgen"
+    "eslint": "npx projen eslint"
   },
   "author": {
     "name": "Joe Snell",
@@ -45,7 +44,6 @@
     "projen": "^0.12.3",
     "standard-version": "^9.0.0",
     "ts-jest": "^26.4.4",
-    "typedoc": "^0.20.3",
     "typescript": "^3.9.5"
   },
   "dependencies": {

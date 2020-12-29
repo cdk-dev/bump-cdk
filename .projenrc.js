@@ -14,7 +14,6 @@ const project = new TypeScriptProject({
   ],
 
   codeCov: true,
-  docgen: true,
   gitpod: true,
   projenUpgradeSecret: 'PROJEN_GITHUB_TOKEN',
   releaseToNpm: true,
@@ -137,3 +136,4 @@ project.gitpod.addTasks({
 });
 
 project.synth();
+
