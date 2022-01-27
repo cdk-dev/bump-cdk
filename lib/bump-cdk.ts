@@ -32,16 +32,21 @@ async function processDependencies(
   if (debug) {
     console.log('processing');
   }
+  const alphaVersion = `${version}-alpha.0`;
   let response = Object.assign({}, dependencies);
   for (const packageName in dependencies) {
     if (debug) {
       console.log(`Processing: ${packageName}`);
     }
+    const isAlphaPackage = packageName.includes('alpha');
     const currentPackage = dependencies[packageName];
 
     cdkPackagePatterns.forEach((pattern) => {
       if (packageName.match(pattern)) {
-        if (currentPackage === version) {
+        if (
+          currentPackage === version ||
+          (isAlphaPackage && currentPackage === alphaVersion)
+        ) {
           if (debug) {
             console.log(`${packageName} already up to date`);
           }
@@ -50,11 +55,17 @@ async function processDependencies(
 
         if (debug) {
           console.log(
-            `Updating ${packageName}@${currentPackage} -> ${version}`
+            `Updating ${packageName}@${currentPackage} -> ${
+              isAlphaPackage ? alphaVersion : version
+            }`
           );
         }
 
-        response[packageName] = version;
+        if (isAlphaPackage) {
+          response[packageName] = alphaVersion;
+        } else {
+          response[packageName] = version;
+        }
       }
     });
   }
@@ -100,7 +111,7 @@ export async function bumpCdk(
     dependencyKeys
       .filter((key) => packageJson[key])
       .map(async (key) => {
-        return new Promise(async (resolve, reject) => {
+        return new Promise<void>(async (resolve, reject) => {
           try {
             if (debug) {
               console.log(`processing: ${key}`);
@@ -120,9 +131,9 @@ export async function bumpCdk(
   );
 
   const hasChanges = original !== packageJson;
-    
+
   const formattedFile = JSON.stringify(packageJson, null, 2);
-  
+
   if (!dryRun) {
     if (hasChanges) {
       if (debug) {
